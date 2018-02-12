@@ -8,15 +8,7 @@ provider:
     DYNAMODB_INDEX_PLAYERS_SCORE_GAME_ID_SCORE: gameId_score_idx
     DYNAMODB_TABLE_TEAMS_SCORE: Ants-Smashing-TeamsScore
     DYNAMODB_INDEX_TEAMS_SCORE_GAME_ID_SCORE: gameId_score_idx
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:Query
-      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE_PLAYERS_SCORE}/index/${self:provider.environment.DYNAMODB_INDEX_PLAYERS_SCORE_GAME_ID_SCORE}"
-    - Effect: Allow
-      Action:
-        - dynamodb:Query
-      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE_TEAMS_SCORE}/index/${self:provider.environment.DYNAMODB_INDEX_TEAMS_SCORE_GAME_ID_SCORE}"
+  role: arn:aws:iam::329054710135:role/lambda-kinesis-ants
 
 functions:
   getPlayersScores:
@@ -24,7 +16,7 @@ functions:
 
     events:
       - http:
-          path: players-scores-by-game/{gameId}
+          path: scores/games/{gameId}/players
           method: get
 
   getTeamsScores:
@@ -32,5 +24,5 @@ functions:
 
     events:
       - http:
-          path: teams-scores-by-game/{gameId}
+          path: scores/games/{gameId}/teams
           method: get
