@@ -7,6 +7,8 @@ node {
         	checkout scm
         }
       	stage ('Deploy') {
+      	    sh "npm init -y"
+      	    sh "npm install serverless-domain-manager --save-dev"
       	    sh "serverless deploy"
       	}
     } catch (err) {
