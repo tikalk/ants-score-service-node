@@ -1,0 +1,26 @@
+{
+  "name": "ants-score-service-node",
+  "version": "1.0.0",
+  "description": "This service is deployed using [serverless](https://serverless.com).",
+  "main": "handler.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tikalk/ants-score-service-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tikalk/ants-score-service-node/issues"
+  },
+  "homepage": "https://github.com/tikalk/ants-score-service-node#readme",
+  "devDependencies": {
+    "serverless-domain-manager": "^2.3.0"
+  }
+}

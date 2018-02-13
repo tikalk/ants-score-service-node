@@ -16,7 +16,7 @@ functions:
 
     events:
       - http:
-          path: scores/games/{gameId}/players
+          path: games/{gameId}/players
           method: get
 
   getTeamsScores:
@@ -24,5 +24,16 @@ functions:
 
     events:
       - http:
-          path: scores/games/{gameId}/teams
+          path: games/{gameId}/teams
           method: get
+
+plugins:
+  - serverless-domain-manager
+
+custom:
+  customDomain:
+    domainName: "fuze.tikal.io"
+    basePath: 'scores'
+    stage: ${self:provider.stage}
+    createRoute53Record: true
+    endpointType: 'regional'
