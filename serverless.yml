@@ -18,6 +18,7 @@ functions:
       - http:
           path: games/{gameId}/players
           method: get
+          cors: true
 
   getTeamsScores:
     handler: handler.getTeamsScores
@@ -26,6 +27,7 @@ functions:
       - http:
           path: games/{gameId}/teams
           method: get
+          cors: true
 
 plugins:
   - serverless-domain-manager
