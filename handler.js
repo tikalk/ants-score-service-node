@@ -11,7 +11,7 @@ const onError = (error, callback) => {
 
 module.exports.getPlayersScores = (event, context, callback) => {
     if(event.pathParameters.gameId === "latest"){
-        db.getLatestGame(error, result) => {
+        db.getLatestGame(null,(error, result) => {
             console.log('result is:'+result);
             const gameId = result.Items[0].gameId.N;
             console.log('found gameId:'+gameId);
@@ -33,7 +33,7 @@ module.exports.getPlayersScores = (event, context, callback) => {
                 };
                 callback(null, response);
             });
-        }
+        });
     }
     else{
         db.getPlayerScores(event.pathParameters.gameId, (error, result) => {
