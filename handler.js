@@ -33,7 +33,7 @@ module.exports.getPlayersScores = (event, context, callback) => {
 //                };
 //                callback(null, response);
 //            });
-//        });
+        });
     }
     else{
         db.getPlayerScores(event.pathParameters.gameId, (error, result) => {
