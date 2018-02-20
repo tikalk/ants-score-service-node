@@ -31,7 +31,7 @@ functions:
           cors: true
 
   publishScoreEventsHandler:
-    handler: publishScoreEventsHandler.handler
+    handler: handler.publishScoreEventsHandler
 
     events:
       - http:
