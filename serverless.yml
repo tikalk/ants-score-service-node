@@ -30,6 +30,15 @@ functions:
           method: get
           cors: true
 
+  publishScoreEventsHandler:
+    handler: publishScoreEventsHandler.handler
+
+    events:
+      - http:
+          path: 'publish'
+          method: get
+          cors: true
+
 plugins:
   - serverless-domain-manager
 

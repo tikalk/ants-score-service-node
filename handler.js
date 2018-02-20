@@ -1,5 +1,8 @@
 const db = require('./lib/db');
 
+var grip = require('grip');
+var faas_grip = require('faas-grip');
+
 const onError = (error, callback) => {
     console.error(error);
     callback(null, {
@@ -50,3 +53,19 @@ module.exports.getTeamsScores = (event, context, callback) => {
         callback(null, response);
     });
 };
+
+
+module.exports.publishScoreEventsHandler = function (event, context, callback) {
+    faas_grip.publish('test', new grip.HttpStreamFormat(
+        'event: message\ndata: {"text": "hello world"}\n\n'));
+     // create a response
+    const response = {
+        statusCode: 200,
+        headers: {
+            "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
+            "Access-Control-Allow-Credentials" : true // Required for cookies, authorization headers with HTTPS
+        },
+        body: JSON.stringify(result.Items),
+    };
+    callback(null, response);
+}
