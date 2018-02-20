@@ -9,6 +9,7 @@ provider:
     DYNAMODB_TABLE_TEAMS_SCORE: Ants-Smashing-TeamsScore
     DYNAMODB_INDEX_TEAMS_SCORE_GAME_ID_SCORE: gameId_score_idx
     DYNAMODB_INDEX_TEAMS_SCORE_DATE_TIME: date_time_idx
+    GRIP_URL: https://api.fanout.io/realm/c2f47682?iss=c2f47682&key=base64:JciP77y/AekMKyeoLl452A==
   role: arn:aws:iam::329054710135:role/lambda-kinesis-ants
 
 functions:
