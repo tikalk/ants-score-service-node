@@ -65,7 +65,7 @@ module.exports.publishScoreEventsHandler = function (event, context, callback) {
             "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
             "Access-Control-Allow-Credentials" : true // Required for cookies, authorization headers with HTTPS
         },
-        body: JSON.stringify(result.Items),
+        body: "{}",
     };
     callback(null, response);
 }
