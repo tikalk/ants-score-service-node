@@ -57,7 +57,7 @@ module.exports.getTeamsScores = (event, context, callback) => {
 
 module.exports.publishScoreEventsHandler = function (event, context, callback) {
     const eventStr = JSON.stringify(event)
-    log.console("Got Event from stream : "+eventStr);
+    console.log("Got Event from stream : "+eventStr);
     faas_grip.publish('test', new grip.HttpStreamFormat(
         'event: message\ndata: '+eventStr+'\n\n'));
     callback(null, "Successfully processed "+eventStr);
