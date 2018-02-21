@@ -9,6 +9,7 @@ node {
       	stage ('Deploy') {
       	    sh "npm init -y"
       	    sh "npm install serverless-domain-manager --save-dev"
+      	    sh "npm install dynamo-converters"
       	    sh "npm install faas-grip"
       	    sh "serverless deploy"
       	}

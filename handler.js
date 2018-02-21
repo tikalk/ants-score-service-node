@@ -1,5 +1,7 @@
 const db = require('./lib/db');
 
+var dynamoConverters = require('dynamo-converters');
+
 var grip = require('grip');
 var faas_grip = require('faas-grip');
 
@@ -61,7 +63,7 @@ module.exports.publishScoreEventsHandler = function (event, context, callback) {
     console.log("Got Event from stream : "+eventStr);
 
     const newImage = event.Records.map(record => record.dynamodb.NewImage);
-    var unmarshalled = AWS.DynamoDB.Converter.unmarshall(newImage);
+    var unmarshalled = dynamoConverters.itemToData(newImage);
     const unmarshaledStr = JSON.stringify(unmarshalled);
     console.log("unmarshaledStr is  : "+unmarshaledStr);
 
