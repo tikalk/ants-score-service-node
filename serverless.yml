@@ -31,15 +31,6 @@ functions:
           method: get
           cors: true
 
-#  publishScoreEventsHandler:
-#    handler: handler.publishScoreEventsHandler
-#
-#    events:
-#      - http:
-#          path: 'publish'
-#          method: get
-#          cors: true
-
   publishScoreEventsHandler:
     handler: handler.publishScoreEventsHandler
 
