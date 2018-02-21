@@ -62,7 +62,7 @@ module.exports.publishScoreEventsHandler = function (event, context, callback) {
 
     const newImage = event.Records.map(record => record.dynamodb.NewImage);
     var unmarshalled = AWS.DynamoDB.Converter.unmarshall(newImage);
-    cosnt unmarshaledStr = JSON.stringify(unmarshalled);
+    const unmarshaledStr = JSON.stringify(unmarshalled);
     console.log("unmarshaledStr is  : "+unmarshaledStr);
 
 
