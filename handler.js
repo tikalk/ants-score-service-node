@@ -57,7 +57,8 @@ module.exports.getTeamsScores = (event, context, callback) => {
 
 module.exports.publishScoreEventsHandler = function (event, context, callback) {
     faas_grip.publish('test', new grip.HttpStreamFormat(
-        'event: message\ndata: {"text": "hello yanai"}\n\n'));
+        'event: message\ndata: '+event+'\n\n'));
+//        'event: message\ndata: {"text": "hello yanai"}\n\n'));
      // create a response
     const response = {
         statusCode: 200,

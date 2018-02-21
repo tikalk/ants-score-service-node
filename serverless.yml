@@ -31,14 +31,22 @@ functions:
           method: get
           cors: true
 
+#  publishScoreEventsHandler:
+#    handler: handler.publishScoreEventsHandler
+#
+#    events:
+#      - http:
+#          path: 'publish'
+#          method: get
+#          cors: true
+
   publishScoreEventsHandler:
     handler: handler.publishScoreEventsHandler
 
     events:
-      - http:
-          path: 'publish'
-          method: get
-          cors: true
+      - stream:
+          type: dynamodb
+          arn: arn:aws:dynamodb:us-west-2:329054710135:table/Ants-Smashing-PlayersScore/stream/2018-02-21T14:45:23.883
 
 plugins:
   - serverless-domain-manager
