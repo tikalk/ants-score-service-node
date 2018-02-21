@@ -37,7 +37,7 @@ functions:
     events:
       - stream:
           type: dynamodb
-          arn: arn:aws:dynamodb:us-west-2:329054710135:table/Ants-Smashing-PlayersScore/stream/*
+          arn: arn:aws:dynamodb:us-west-2:329054710135:table/Ants-Smashing-PlayersScore/stream/2018-02-21T19:00:26.285
 
 plugins:
   - serverless-domain-manager
