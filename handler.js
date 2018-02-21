@@ -1,8 +1,5 @@
 const db = require('./lib/db');
 
-var grip = require('grip');
-var faas_grip = require('faas-grip');
-
 const onError = (error, callback) => {
     console.error(error);
     callback(null, {
@@ -55,11 +52,3 @@ module.exports.getTeamsScores = (event, context, callback) => {
 };
 
 
-module.exports.publishScoreEventsHandler = function (event, context, callback) {
-    const eventStr = JSON.stringify(event);
-    console.log("Got Event from stream : "+eventStr);
-    const newImage = event.Records.map(record => record.dynamodb.NewImage);
-    faas_grip.publish('test', new grip.HttpStreamFormat(
-        'event: message\ndata: '+JSON.stringify(newImage)+'\n\n'));
-    callback(null, "Successfully processed "+eventStr);
-}
