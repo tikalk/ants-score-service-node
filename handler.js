@@ -60,6 +60,6 @@ module.exports.publishScoreEventsHandler = function (event, context, callback) {
     console.log("Got Event from stream : "+eventStr);
     const newImage = event.Records.map(record => record.dynamodb.NewImage);
     faas_grip.publish('test', new grip.HttpStreamFormat(
-        'event: message\ndata: '+JSON.stringify(event)+'\n\n'));
+        'event: message\ndata: '+JSON.stringify(newImage)+'\n\n'));
     callback(null, "Successfully processed "+eventStr);
 }
