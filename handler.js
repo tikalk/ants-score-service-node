@@ -56,17 +56,9 @@ module.exports.getTeamsScores = (event, context, callback) => {
 
 
 module.exports.publishScoreEventsHandler = function (event, context, callback) {
+    const eventStr = JSON.stringify(event)
+    log.console("Got Event from stream : "+eventStr);
     faas_grip.publish('test', new grip.HttpStreamFormat(
-        'event: message\ndata: '+event+'\n\n'));
-//        'event: message\ndata: {"text": "hello yanai"}\n\n'));
-     // create a response
-    const response = {
-        statusCode: 200,
-        headers: {
-            "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
-            "Access-Control-Allow-Credentials" : true // Required for cookies, authorization headers with HTTPS
-        },
-        body: "{}",
-    };
-    callback(null, response);
+        'event: message\ndata: '+eventStr+'\n\n'));
+    callback(null, "Successfully processed "+eventStr);
 }
