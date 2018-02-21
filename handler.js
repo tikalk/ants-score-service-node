@@ -56,9 +56,18 @@ module.exports.getTeamsScores = (event, context, callback) => {
 
 
 module.exports.publishScoreEventsHandler = function (event, context, callback) {
-    const eventStr = JSON.stringify(event)
+    const eventStr = JSON.stringify(event);
+    JSON.stringify(event);
     console.log("Got Event from stream : "+eventStr);
+
+    const newImage = event.Records.map(record => record.dynamodb.NewImage);
+    var unmarshalled = AWS.DynamoDB.Converter.unmarshall(newImage);
+    cosnt unmarshaledStr = JSON.stringify(unmarshalled);
+    console.log("unmarshaledStr is  : "+unmarshaledStr);
+
+
     faas_grip.publish('test', new grip.HttpStreamFormat(
-        'event: message\ndata: '+eventStr+'\n\n'));
+        'event: message\ndata: '+unmarshaledStr+'\n\n'));
+
     callback(null, "Successfully processed "+eventStr);
 }
