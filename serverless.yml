@@ -42,6 +42,7 @@ functions:
 
 plugins:
   - serverless-domain-manager
+  - serverless-plugin-tracing
 
 custom:
   customDomain:
