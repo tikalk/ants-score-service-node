@@ -10,6 +10,14 @@ provider:
     DYNAMODB_INDEX_TEAMS_SCORE_GAME_ID_SCORE: gameId_score_idx
     DYNAMODB_INDEX_TEAMS_SCORE_DATE_TIME: date_time_idx
   role: arn:aws:iam::329054710135:role/lambda-kinesis-ants
+  tracing: true # enable tracing
+    iamRoleStatements:
+      - Effect: "Allow" # xray permissions (required)
+        Action:
+          - "xray:PutTraceSegments"
+          - "xray:PutTelemetryRecords"
+        Resource:
+          - "*"
 
 functions:
   getPlayersScores:
