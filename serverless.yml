@@ -4,13 +4,13 @@ provider:
   runtime: nodejs6.10
   region: us-west-2
   tracing: true # enable tracing
-    iamRoleStatements:
-      - Effect: "Allow" # xray permissions (required)
-        Action:
-          - "xray:PutTraceSegments"
-          - "xray:PutTelemetryRecords"
-        Resource:
-          - "*"
+  iamRoleStatements:
+    - Effect: "Allow" # xray permissions (required)
+      Action:
+        - "xray:PutTraceSegments"
+        - "xray:PutTelemetryRecords"
+      Resource:
+        - "*"
   environment:
     DYNAMODB_TABLE_PLAYERS_SCORE: Ants-Smashing-PlayersScore
     DYNAMODB_INDEX_PLAYERS_SCORE_GAME_ID_SCORE: gameId_score_idx
