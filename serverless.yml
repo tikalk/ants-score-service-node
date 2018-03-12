@@ -3,6 +3,14 @@ provider:
   name: aws
   runtime: nodejs6.10
   region: us-west-2
+  tracing: true # enable tracing
+  iamRoleStatements:
+    - Effect: "Allow" # xray permissions (required)
+      Action:
+        - "xray:PutTraceSegments"
+        - "xray:PutTelemetryRecords"
+      Resource:
+        - "*"
   environment:
     DYNAMODB_TABLE_PLAYERS_SCORE: Ants-Smashing-PlayersScore
     DYNAMODB_INDEX_PLAYERS_SCORE_GAME_ID_SCORE: gameId_score_idx
@@ -10,14 +18,7 @@ provider:
     DYNAMODB_INDEX_TEAMS_SCORE_GAME_ID_SCORE: gameId_score_idx
     DYNAMODB_INDEX_TEAMS_SCORE_DATE_TIME: date_time_idx
   role: arn:aws:iam::329054710135:role/lambda-kinesis-ants
-  tracing: true # enable tracing
-    iamRoleStatements:
-      - Effect: "Allow" # xray permissions (required)
-        Action:
-          - "xray:PutTraceSegments"
-          - "xray:PutTelemetryRecords"
-        Resource:
-          - "*"
+
 
 functions:
   getPlayersScores:
